@@ -7,6 +7,9 @@ import lombok.Setter;
 
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Getter
 @Setter
@@ -19,8 +22,12 @@ public class Post {
 
     private String content;
 
+    @Column(nullable = false, updatable = false)
+    @CreationTimestamp
     private Timestamp created;
 
+    @Column(nullable = false)
+    @UpdateTimestamp
     private Timestamp updated;
 
     @ManyToOne
